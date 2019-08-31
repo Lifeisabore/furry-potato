@@ -3,6 +3,7 @@ read me
 #1.4 python数据结构
 
 #1.4.1 列表
+
 #第一个代码，用到了字符串的切片
 list=['peter','lilei','wangwu','xiaoming']
 print(list[0])
@@ -40,5 +41,29 @@ http://bj.xiaozhu.com/search-duanzufang-p10-0/
 http://bj.xiaozhu.com/search-duanzufang-p11-0/
 http://bj.xiaozhu.com/search-duanzufang-p12-0/
 http://bj.xiaozhu.com/search-duanzufang-p13-0/
+
+#1.4.2 字典
+
+#书上说字典的操作以后再说，这里仅有一个格式
+
+user_info {
+   'name':'xiaoming',
+   'age':'23'
+   'sex':'man'
+}
+
+#1.4.3 元组和集合
+
+#在爬虫里，元组和集合很少用到。元组只能查看不能修改。格式如下：
+
+tuple=(1,2,3)  #这里的tuple即是元组的意思
+
+#集合就像是数学里的集合。每个集合的元素是无序的，不可以有重复的对象，因此通过集合可以把重复的数据去除。
+
+list=['xiaoming','zhangyun','xiaoming']
+set=set(list)               #这里的set就是集合的意思
+print(set)
+#result ('zhangyun','xiaoming')  #我尝试了print(set(list))就可以出来结果，更简单。
+
 
 
