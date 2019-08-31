@@ -66,4 +66,29 @@ print(set)
 #result ('zhangyun','xiaoming')  #我尝试了print(set(list))就可以出来结果，更简单。
 
 
+#1.5 python面对对象暂时不太清楚，先放一放。
+
+# 2.0 爬虫
+
+#2.1 使用爬虫数据库需要先现在pip，可在命令行还有pycharm中下载。具体步骤网上皆有
+
+#2.2 爬虫三大库
+
+#2.2.1 Requests库
+
+#第一类，没有反爬虫限制，直接输入网站就能得到
+
+import requests
+res=requests.get('http://bj.xiaozhu.com/')    #网站是小猪短租网的
+print(res)                                    #如果请求网站成功，则显示<Response [200]>, 失败则为404，400样式
+print(res.text)                               #打印文本部分太长，这里不表示出来。打印出来的为网站的源代码
+
+
+#第二类，有反爬虫限制，需要用个假开头
+
+import requests
+headers = {'User-Agent':"Mozilla/5.0 "}                    #这里的headers需要填写网址的User-Agent，但我发现说明号前后随便填什么都行，根本不影响
+res = requests.get('https://www.youtube.com/watch?v=rfscVS0vtbw',headers=headers)      #某youtube视频
+print(res.text)
+
 
