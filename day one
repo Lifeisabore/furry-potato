@@ -1,2 +1,44 @@
 read me
 
+#1.4 python数据结构
+
+#1.4.1 列表
+#第一个代码，用到了字符串的切片
+list=['peter','lilei','wangwu','xiaoming']
+print(list[0])
+print([0:])             这里0:后面不加便取了后面所有值
+#result
+peter
+['wangwu','xiaoming']     
+
+#第二个代码，用到了循环语句for
+names=['xiaoming','wangwu','peter']
+ages=[23,15,58]                   #这里我尝试了一下，用字符串输出的值跟整型一样
+for name, age in zip (names, ages):              #这里我尝试把name，age换成a，b，结果输出一致，原因不明。另外我还尝试了把name，age换成names，ages，结果输出一致，在网上查找资料后感觉应该换成names，ages才更准确，也能明白是什么意思。
+    print(name,age)                              #还有这里的zip是一个函数，用来把两组或多组不同的对象中的元素打包成一组。
+#result
+xiaoming 23
+wangwu 15
+peter 58
+
+#第三个代码，用于存储有一定规律的网页
+urls=['http://bj.xiaozhu.com/search-duanzufang-p{}-0/'.format(number)  #这里我试了在代码最后加]并将下行代码的]去掉，但结果错误，原因不明。我试着将下一行代码直接添加到这一行，成功运行。
+for number in range (1,14)]
+for url in urls:                 #同样是这个代码，如果把url换成包括urls本身在内的其他字母，也可以运行
+    print(url)
+ #result
+http://bj.xiaozhu.com/search-duanzufang-p1-0/
+http://bj.xiaozhu.com/search-duanzufang-p2-0/
+http://bj.xiaozhu.com/search-duanzufang-p3-0/
+http://bj.xiaozhu.com/search-duanzufang-p4-0/
+http://bj.xiaozhu.com/search-duanzufang-p5-0/
+http://bj.xiaozhu.com/search-duanzufang-p6-0/
+http://bj.xiaozhu.com/search-duanzufang-p7-0/
+http://bj.xiaozhu.com/search-duanzufang-p8-0/
+http://bj.xiaozhu.com/search-duanzufang-p9-0/
+http://bj.xiaozhu.com/search-duanzufang-p10-0/
+http://bj.xiaozhu.com/search-duanzufang-p11-0/
+http://bj.xiaozhu.com/search-duanzufang-p12-0/
+http://bj.xiaozhu.com/search-duanzufang-p13-0/
+
+
