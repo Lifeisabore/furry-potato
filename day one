@@ -91,4 +91,11 @@ headers = {'User-Agent':"Mozilla/5.0 "}                    #这里的headers需�
 res = requests.get('https://www.youtube.com/watch?v=rfscVS0vtbw',headers=headers)      #某youtube视频
 print(res.text)
 
+#2.2.2 BeautifulSoup库（说是能优化request得到的数据，以标准缩进格式的结构输出，为数据的过滤提取做好准备）
+
+import requests
+from bs4 import BeautifulSoup        #只是跟前面比多了这一步而已，
+headers={'xxx':'wwww'}
+res=requests.get('https://blog.csdn.net/huatian5/article/details/74502687',headers=headers)
+print(res.text)
 
