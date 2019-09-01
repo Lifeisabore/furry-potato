@@ -99,3 +99,45 @@ headers={'xxx':'wwww'}
 res=requests.get('https://blog.csdn.net/huatian5/article/details/74502687',headers=headers)
 print(res.text)
 
+# 三种方法，find（），find_all()和select()
+
+# find()  和 find_all()具体方法不明,格式如下
+find_all(tag,attibutes,recursive,text,limit,keywords)
+find(tag,attibutes,recursive,text,keywords)   #说是两个方法用法差不多，并且常用的是前两个参数
+
+# select()
+soup.select(div.item > a > h1) #括号内的内容通过chrome复制得到。类似于 中国>湖南>长沙,从大到小，提取需要的信息。
+
+#范例用法一
+
+import requests                        #这一个跟下一个就不谈了，都要先输入一下，不然没法用select
+from bs4 import BeautifulSoup
+headers={'User-Agent':'Mozilla/5.0'}      #这个我发现还是可以随便定，不知道为什么书上说要找user-agent。不过不能忘了加引号，不然出不来结果
+res=requests.get('https://bj.xiaozhu.com/%E5%8C%97%E4%BA%AC_1h5gbS-duanzufang-20/?putkey=%E5%8C%97%E4%BA%AC',headers=headers)
+soup=BeautifulSoup(res.text,'html.parser')         #这里的‘html.parser‘是一种解析类型，具体用法不明
+A=soup.select('#page_list > ul > li:nth-child(1) > div.result_btm_con.lodgeunitname > div:nth-child(1) > span > i')     #这串代码输出的是价格，所以我们鼠标至价格那一栏右击选择copy selector，把那一串编码复制过来。此外书上说要用li:nth-child(1)转为li:nth-oftype(1),但我没转也没事
+print(A)                                #我试了携程和airbnb，但只有小猪网能出来结果，不知道为什么。难道是因为反爬虫限制么？
+#result
+[<i>368</i>]
+
+#范例用法二
+#这里跟上个例子的不同在于多了最后一行代码，即将网页的所以价格打印出来，而不是像上个例子一样只打印一个
+import requests  
+from bs4 import BeautifulSoup
+headers={'User-Agent':'Mozilla/5.0'}
+res=requests.get('https://bj.xiaozhu.com/',headers=headers)
+soup=BeautifulSoup(res.text,'html.parser')
+A=soup.select('#page_list > ul > li > div.result_btm_con.lodgeunitname > div:nth-child(1) > span > i')   #这里的li：nth要换成li
+for price in A:
+    print(price)           #结果为一列字符串数字。
+
+#范例用法三
+#这里跟用法三相比也是只多加了一部分get_text(),即只打印出数字
+import requests
+from bs4 import BeautifulSoup
+headers={'User-Agent':'Mozilla/5.0'}
+res=requests.get('https://bj.xiaozhu.com/',headers=headers)
+soup=BeautifulSoup(res.text,'html.parser')
+A=soup.select('#page_list > ul > li > div.result_btm_con.lodgeunitname > div:nth-child(1) > span > i')
+for price in A:
+    print(price.get_text())    #结果只有一列数字
