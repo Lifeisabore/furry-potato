@@ -7,14 +7,14 @@ headers={'User-Agent':'Only you can hear me Summoner'}
 def get_info(url):
     wb_data=requests.get(url,headers=headers)
     soup=BeautifulSoup(wb_data.text,'html.parser')
-    ranks=soup.select('#rankWrap > div.pc_temp_songlist > ul > li > span.pc_temp_num')
-    titles=soup.select('#rankWrap > div.pc_temp_songlist > ul > li > a')
-    times=soup.select('#rankWrap > div.pc_temp_songlist > ul > li > span.pc_temp_tips_r > span')
-    for rank,title,time in zip(ranks,titles,times):
+    ranks=soup.select('#rankWrap > div.pc_temp_songlist > ul > li > span.pc_temp_num')   #排名 copy selector
+    titles=soup.select('#rankWrap > div.pc_temp_songlist > ul > li > a')                 #名称 copy selector
+    times=soup.select('#rankWrap > div.pc_temp_songlist > ul > li > span.pc_temp_tips_r > span')   #时间 copy selector
+    for rank,title,time in zip(ranks,titles,times):                       #整合到一起
         data={'rank':rank.get_text().strip(), 'singer':title.get_text().split('-')[0], 'song':title.get_text().split('-')[1]}
         print(data)
 
-if __name__ == '__main__':
+if __name__ == '__main__':                                      #这部分我是真没看懂，怎么感觉越学越不懂了，不是还说python是最简单的么？这不是废了我。。。
     urls=['https://www.kugou.com/yy/rank/home/{}-8888.html?from=rank'.format(str(i)) for i in range (1,23)]
     for url in urls:
         get_info(url)
