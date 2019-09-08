@@ -1,0 +1,23 @@
+import requests
+import time
+import re
+
+headers={'User-agent':'onlyyoucanhearme'}
+
+file=open('doupo22.txt','a+')
+
+def get_info(url):
+    res =requests.get(url,headers=headers)
+    if res.status_code ==200:
+        contents=re.findall('<p>(.*?)<p>',res.content.decode('utf-8'),re.S)
+        for content in contents:
+            file.write(content+'\n')
+    else:
+            print('无法连接' + url)
+
+if __name__ == '__main__':
+    urls = ['http://www.doupoxs.com/doupocangqiong/{}.html'.format(str(i)) for i in range (1,10)]
+    for url in urls:
+        get_info(url)
+        time.sleep(1)
+file.close()
