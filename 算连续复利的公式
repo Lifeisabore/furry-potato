@@ -1,0 +1,10 @@
+invested_money = input('投入本金（只用输入数字）：')
+interest_rate = input('利率（只用输入数字）：')
+time = input('时长（只用输入数字）：')
+invested_money = float(invested_money)
+interest_rate = float(interest_rate) * 0.01
+time = int(time)
+print(interest_rate)
+for i in range(time + 1):
+    invested_money = invested_money * (1 + interest_rate)
+print('{}年后的本金加利息为：{:.2f}'.format(time,invested_money))
