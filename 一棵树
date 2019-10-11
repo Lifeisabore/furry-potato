@@ -1,0 +1,29 @@
+# Get the number of rows for tree
+tree_height = input ('how tall is the tree:')
+
+# Convert tree_height to integer
+tree_height = int (tree_height)
+
+# initiate the spaces
+spaces = tree_height - 1
+
+# initiate the hashes
+hashes = 1
+
+# define the stump
+stump = tree_height - 1
+
+# While loop times equal the tree height
+while tree_height != 0:
+    for i in range (spaces):
+        print (' ', end='')
+    for i in range (hashes):
+        print ('@', end='')
+    print()
+    spaces -= 1
+    hashes += 2
+    tree_height -= 1
+
+for i in range (stump):
+    print (' ', end='')
+print('@')
